@@ -44,4 +44,14 @@ public class StringCalculatorTest {
     public void shouldReturn12WhenThreeNumbers4And4And4AreSupplied() {
         assertEquals(12, new StringCalculator().Add("4,4,4"));
     }
+
+    @Test
+    public void shouldReturnSumWhenNewLineIsSupplied() {
+        assertEquals(16, new StringCalculator().Add("13\n3"));
+    }
+
+    @Test
+    public void shouldReturnSumWhenCommasAndNewLinesAreMixed() {
+        assertEquals(22, new StringCalculator().Add("13,7\n2"));
+    }
 }

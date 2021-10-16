@@ -4,7 +4,13 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] nums = s.split(",");
+        String[] nums;
+        if(s.contains("\n")) {
+            nums = s.split("\n");
+        } else {
+            nums = s.split(",");
+        }
+
         int sum = 0;
         for (String num : nums) {
             sum = sum + Integer.parseInt(num);
