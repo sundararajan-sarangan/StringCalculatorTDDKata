@@ -54,4 +54,9 @@ public class StringCalculatorTest {
     public void shouldReturnSumWhenCommasAndNewLinesAreMixed() {
         assertEquals(22, new StringCalculator().Add("13,7\n2"));
     }
+
+    @Test
+    public void shouldAcceptSemiColonAsCustomDelimiter() {
+        assertEquals(3, new StringCalculator().Add("//;\n1;2"));
+    }
 }
