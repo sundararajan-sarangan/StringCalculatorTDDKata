@@ -6,10 +6,20 @@ public class StringCalculator {
             return 0;
         }
 
-        if(numbers.startsWith("//;"))
-            return new Adder(new Delimiters(List.of(";"))).sumOf(numbers.substring(4));
+        Adder adder;
+        if(hasCustomDelimiter(numbers)) {
+            String delimiters = numbers.substring(2, 3);
+            numbers = numbers.substring(4);
+            adder = new Adder(new Delimiters(List.of(delimiters)));
+        } else {
+            adder = new Adder();
+        }
 
-        return new Adder().sumOf(numbers);
+        return adder.sumOf(numbers);
+    }
+
+    private boolean hasCustomDelimiter(String numbers) {
+        return numbers.startsWith("//");
     }
 
     private boolean isNullOrEmpty(String s) {

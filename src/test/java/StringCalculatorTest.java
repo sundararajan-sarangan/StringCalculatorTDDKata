@@ -59,4 +59,9 @@ public class StringCalculatorTest {
     public void shouldAcceptSemiColonAsCustomDelimiter() {
         assertEquals(3, new StringCalculator().Add("//;\n1;2"));
     }
+
+    @Test
+    public void shouldAcceptHyphenAsCustomDelimiter() {
+        assertEquals(9, new StringCalculator().Add("//-\n8-1"));
+    }
 }
