@@ -8,8 +8,8 @@ public class StringCalculator {
 
         Adder adder;
         if(hasCustomDelimiter(numbers)) {
-            String delimiters = numbers.substring(2, 3);
-            numbers = numbers.substring(4);
+            String delimiters = extractDelimitersFrom(numbers);
+            numbers = extractNumbersFrom(numbers);
             adder = new Adder(new Delimiters(List.of(delimiters)));
         } else {
             adder = new Adder();
@@ -18,11 +18,19 @@ public class StringCalculator {
         return adder.sumOf(numbers);
     }
 
+    private boolean isNullOrEmpty(String s) {
+        return s == null || s.equals("");
+    }
+
+    private String extractDelimitersFrom(String numbers) {
+        return numbers.substring(2, 3);
+    }
+
     private boolean hasCustomDelimiter(String numbers) {
         return numbers.startsWith("//");
     }
 
-    private boolean isNullOrEmpty(String s) {
-        return s == null || s.equals("");
+    private String extractNumbersFrom(String numbers) {
+        return numbers.substring(4);
     }
 }
