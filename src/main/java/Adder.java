@@ -3,10 +3,6 @@ import java.util.Arrays;
 public class Adder {
     private final Delimiters delimiters;
 
-    public Adder() {
-        this.delimiters = new Delimiters();
-    }
-
     public Adder(Delimiters delimiters) {
         this.delimiters = delimiters;
     }

@@ -6,31 +6,27 @@ public class StringCalculator {
             return 0;
         }
 
-        Adder adder;
-        if(hasCustomDelimiter(numbers)) {
-            String delimiters = extractDelimitersFrom(numbers);
-            numbers = extractNumbersFrom(numbers);
-            adder = new Adder(new Delimiters(List.of(delimiters)));
-        } else {
-            adder = new Adder();
-        }
+        Delimiters delimiters = extractDelimitersFrom(numbers);
+        numbers = discardDelimitersFrom(numbers);
 
-        return adder.sumOf(numbers);
+        return new Adder(delimiters).sumOf(numbers);
     }
 
     private boolean isNullOrEmpty(String s) {
         return s == null || s.equals("");
     }
 
-    private String extractDelimitersFrom(String numbers) {
-        return numbers.substring(2, 3);
+    private Delimiters extractDelimitersFrom(String numbers) {
+        return hasCustomDelimiter(numbers)
+                ? new Delimiters(List.of(numbers.substring(2, 3)))
+                : new Delimiters();
+    }
+
+    private String discardDelimitersFrom(String numbers) {
+        return hasCustomDelimiter(numbers) ? numbers.substring(4) : numbers;
     }
 
     private boolean hasCustomDelimiter(String numbers) {
         return numbers.startsWith("//");
-    }
-
-    private String extractNumbersFrom(String numbers) {
-        return numbers.substring(4);
     }
 }
