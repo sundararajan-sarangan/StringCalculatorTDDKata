@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class StringCalculator {
-    public int Add(String numbers) {
+    public int Add(String numbers) throws Exception {
         if (isNullOrEmpty(numbers)) {
             return 0;
         }
