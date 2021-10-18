@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class StringCalculator {
-    public int Add(String numbers) throws Exception {
+    public int Add(String numbers) {
         if (isNullOrEmpty(numbers)) {
             return 0;
         }
@@ -9,7 +9,7 @@ public class StringCalculator {
         Delimiters delimiters = extractDelimitersFrom(numbers);
         numbers = discardDelimitersFrom(numbers);
 
-        return new Adder(delimiters).sumOf(numbers);
+        return new Adder(delimiters).validateAndFindSumOf(numbers);
     }
 
     private boolean isNullOrEmpty(String s) {
